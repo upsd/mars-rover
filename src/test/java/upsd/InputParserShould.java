@@ -2,6 +2,7 @@ package upsd;
 
 import org.junit.Test;
 import upsd.input.InputParser;
+import upsd.models.Plateau;
 import upsd.models.Rover;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class InputParserShould {
 
     @Test
     public void parse_rovers_from_input() {
-        List<Rover> rovers = InputParser.parseRoversFrom(input);
+        List<Rover> rovers = InputParser.parseRoversFrom(input, new Plateau(1, 1));
 
         assertThat(rovers.size(), is(2));
     }

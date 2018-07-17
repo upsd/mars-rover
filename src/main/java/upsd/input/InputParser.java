@@ -1,5 +1,6 @@
 package upsd.input;
 
+import upsd.models.Plateau;
 import upsd.orientation_and_direction.Orientation;
 import upsd.orientation_and_direction.OrientationCalculator;
 import upsd.models.Rover;
@@ -11,7 +12,7 @@ import java.util.Map;
 
 public class InputParser {
 
-    public static List<Rover> parseRoversFrom(String input) {
+    public static List<Rover> parseRoversFrom(String input, Plateau plateau) {
         String[] commands = getCommandsFrom(input);
 
         List<Rover> rovers = new ArrayList<>();
@@ -24,7 +25,7 @@ public class InputParser {
             int y = Integer.parseInt(startingInfo[1]);
             Orientation orientation = OrientationCalculator.orientationFrom(startingInfo[2]);
 
-            rovers.add(new Rover(i, x, y, orientation));
+            rovers.add(new Rover(i, x, y, orientation, plateau));
         }
 
         return rovers;

@@ -19,7 +19,7 @@ public class MarsRoverSimulator {
     }
 
     private void addRoversToController(String input) {
-        InputParser.parseRoversFrom(input)
+        InputParser.parseRoversFrom(input, plateau)
                 .stream()
                 .forEach(rover -> this.roverController.add(rover));
     }

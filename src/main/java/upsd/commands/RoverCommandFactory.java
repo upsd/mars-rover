@@ -21,11 +21,11 @@ public class RoverCommandFactory {
         }
 
         if (command.equals(RIGHT)) {
-            return new TurnCommand(Direction.RIGHT);
+            return new TurnCommand(Direction.RIGHT, plateau);
         }
 
         if (command.equals(LEFT)) {
-            return new TurnCommand(Direction.LEFT);
+            return new TurnCommand(Direction.LEFT, plateau);
         }
         return null;
     }

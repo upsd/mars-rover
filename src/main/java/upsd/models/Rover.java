@@ -8,13 +8,16 @@ public class Rover {
     private final int x;
     private final int y;
     private final int id;
+    private final RoverState positionState;
     private Orientation orientation;
 
-    public Rover(int id, int x, int y, Orientation orientation) {
+    public Rover(int id, int x, int y, Orientation orientation, Plateau plateau) {
         this.id = id;
         this.x = x;
         this.y = y;
         this.orientation = orientation;
+
+        this.positionState = new RoverStateFactory().getState(plateau, this.orientation);
     }
 
     public int x() {
@@ -33,6 +36,10 @@ public class Rover {
         return this.id;
     }
 
+    public int speed() {
+        return 1;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -48,5 +55,9 @@ public class Rover {
     public int hashCode() {
 
         return Objects.hash(x, y, id, orientation);
+    }
+
+    public Rover move() {
+        return this.positionState.move(this);
     }
 }
